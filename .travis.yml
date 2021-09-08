@@ -8,7 +8,7 @@ before_install:
   - docker build -t babu08/docker-react -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true babu08/react-test npm test
+  - docker run babu08/react-test npm test -- --coverage
 
 after_success:
   - docker build -t babu08/multi-client ./client
