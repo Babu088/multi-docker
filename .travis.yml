@@ -5,10 +5,10 @@ services:
   - docker
 
 before_install:
-  - docker build -t Babu088/react-test -f ./client/Dockerfile.dev ./client
+  - docker build -t Babu08/react-test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true Babu088/react-test npm test
+  - docker run -e CI=true Babu08/react-test npm test
 
 after_success:
   - docker build -t Babu08/multi-client ./client
