@@ -5,21 +5,21 @@ services:
   - docker
 
 before_install:
-  - docker build -t Babu08/docker-react -f ./client/Dockerfile.dev ./client
+  - docker build -t babu08/docker-react -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true Babu08/react-test npm test
+  - docker run -e CI=true babu08/react-test npm test
 
 after_success:
-  - docker build -t Babu08/multi-client ./client
-  - docker build -t Babu08/multi-nginx ./nginx
-  - docker build -t Babu08/multi-server ./server
-  - docker build -t Babu08/multi-worker ./worker
+  - docker build -t babu08/multi-client ./client
+  - docker build -t babu08/multi-nginx ./nginx
+  - docker build -t babu08/multi-server ./server
+  - docker build -t babu08/multi-worker ./worker
   # Log in to the docker CLI
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take those images and push them to docker hub
-  - docker push Babu08/multi-client
-  - docker push Babu08/multi-nginx
-  - docker push Babu08/multi-server
-  - docker push Babu08/multi-worker
+  - docker push babu08/multi-client
+  - docker push babu08/multi-nginx
+  - docker push babu08/multi-server
+  - docker push babu08/multi-worker
 
